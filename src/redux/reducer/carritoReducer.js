@@ -4,8 +4,6 @@ import cerveceria from '../../utils/data_cervezas.js';
 import hamburguesas from '../../utils/data_combos.js';
 import porciones from '../../utils/data_porciones.js';
 
-
-
 const initialState = {
     cerveceria,
     hamburguesas,

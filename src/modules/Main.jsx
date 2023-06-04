@@ -2,7 +2,7 @@ import React from 'react';
 import Seccion from './Seccion.jsx';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
+import Navbar from 'react-bootstrap/NavBar';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
@@ -20,18 +20,22 @@ class Main extends React.Component{
         }
         this.handleClose = this.handleClose.bind(this);
         this.handleShow = this.handleShow.bind(this);
+        this.scrollTop = this.scrollTop.bind(this)
     }
 
-   
-   /*  this.props.dispatch({ type: 'INCREMENT' });   Asi despachamos las acciones*/
-    /* Para componentes de funcion: const dispatch = useDispatch(function) */
     handleClose = () => {
         this.setState({ show: false });
+        
       }
     
     handleShow = () => {
         this.setState({ show: true });
       }
+
+    scrollTop =() => {
+        document.getElementById('top').scrollIntoView({ behavior: 'smooth' });
+      }
+    
 
     render(){
         
@@ -39,9 +43,20 @@ class Main extends React.Component{
         const { porciones, hamburguesas, cerveceria, cart } = this.props;
         return(
             <div>
-                 <Button variant="primary" style={{position: 'fixed', zIndex: '1030' }} onClick={this.handleShow} className="top-50 start-0">
-                    Pedido
-                </Button>
+                {/* Botones */}
+
+                <div className="d-grid gap-2 col-6 mx-auto bottom-0 start-50 translate-middle-x position-fixed " style={{zIndex:'1030'}}>
+                    <Button onClick={this.handleShow} className=" btn-lg btn-primary">
+                        Pedido
+                    </Button>
+                    <Button className='btn-lg btn-primary' onClick={this.scrollTop}>
+                        Subir
+                    </Button>
+                </div>
+
+
+                {/* Slider */}
+
                 <Offcanvas show={show} onHide={this.handleClose} placement='end' >
                     <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Pedido</Offcanvas.Title>
@@ -54,14 +69,18 @@ class Main extends React.Component{
                                 quantity = {el.quantity}
                             />
                         ))}
-                        <Button className='position-absolute bottom-0 start-50 translate-middle' onClick={()=> {this.props.resetear()}}>Reset</Button>
-
+                        
+                        <Button className='position-absolute bottom-0 start-50 translate-middle' onClick={()=> {this.props.resetear(); this.handleClose()}}>Reset</Button>
 
                     </Offcanvas.Body>
                 </Offcanvas>
 
-                    <Navbar bg="dark" variant="dark" className='mb-4'>
-                        <Container>
+                {/* Seccion menu */}
+
+                <div style={{height: '10vh'}}></div>
+
+                    <Navbar bg="dark" variant="dark" className='mb-4 scroll' id='top'>
+                        <Container id='cervezas'>
                         <Navbar.Brand >Cervezas</Navbar.Brand>
                         </Container>
                     </Navbar>
@@ -78,7 +97,7 @@ class Main extends React.Component{
                  ))}
 
                     <Navbar bg="dark" variant="dark" className='mb-4' >
-                        <Container>
+                        <Container id='hamburguesas'>
                         <Navbar.Brand>Hamburguesas</Navbar.Brand>
                         </Container>
                     </Navbar>
@@ -95,7 +114,7 @@ class Main extends React.Component{
                     />
                  ))}
                     <Navbar bg="dark" variant="dark" className='mb-4'>
-                        <Container>
+                        <Container id='papas-fritas'>
                             <Navbar.Brand >Papas Fritas</Navbar.Brand>
                         </Container>
                     </Navbar>
@@ -112,6 +131,7 @@ class Main extends React.Component{
                     />
                  ))}
                 </Row> 
+                <div style={{height: '15vh'}}></div>
             </div>
         )
     }

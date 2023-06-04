@@ -38,13 +38,13 @@ const scrollSwitch =(id) => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={handleToggle} />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link onClick={() => scrollSwitch('cervezas')} style={{ color: 'white', marginLeft: '15px' }}>
+            <Nav.Link onClick={() => {scrollSwitch('cervezas'); handleToggle()}} style={{ color: 'white', marginLeft: '15px' }}>
               Cervezas
             </Nav.Link>
-            <Nav.Link onClick={() => scrollSwitch('hamburguesas')} style={{ color: 'white', marginLeft: '15px' }}>
+            <Nav.Link onClick={() => {scrollSwitch('hamburguesas'); handleToggle()}} style={{ color: 'white', marginLeft: '15px' }}>
               Hamburguesas / Comida
             </Nav.Link>
-            <Nav.Link onClick={() => scrollSwitch('papas-fritas')} style={{ color: 'white', marginLeft: '15px' }}>
+            <Nav.Link onClick={() => {scrollSwitch('papas-fritas'); handleToggle()}} style={{ color: 'white', marginLeft: '15px' }}>
               Papas fritas
             </Nav.Link>
           </Nav>

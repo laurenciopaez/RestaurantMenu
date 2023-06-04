@@ -2,7 +2,7 @@ import React from 'react';
 import Seccion from './Seccion.jsx';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/NavBar';
+import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 

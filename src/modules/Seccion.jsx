@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/button';
+import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
 
 import {sumar1, restar1} from '../redux/actions/index';
